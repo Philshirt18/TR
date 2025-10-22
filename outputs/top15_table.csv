@@ -1,0 +1,16 @@
+Rank,Ticker,Signals/W,Hitrate ±3%,Net P&L/Trade,Median Hold,24h Vol,MaxDD,Robustness,Notes
+1,COAI,19.11,52.69%,-0.09%,3h,$186.76M,-78.94%,0.29,CoinGecko sparkline 7d
+2,HASH,3.59,26.35%,0.13%,7h,$0.01M,-41.71%,0.12,CoinGecko sparkline 7d
+3,ZORA,0.86,20.36%,-0.02%,14h,$164.85M,-35.66%,0.05,CoinGecko sparkline 7d
+4,SNX,0.22,13.77%,-0.14%,28h,$164.10M,-95.06%,0.02,CoinGecko sparkline 7d
+5,MYX,0.22,11.98%,-0.06%,28h,$59.64M,-85.36%,0.02,CoinGecko sparkline 7d
+6,ZEC,0.15,12.57%,0.06%,33h,$1011.94M,-91.47%,0.02,CoinGecko sparkline 7d
+7,ATH,0.10,6.02%,-0.14%,42h,$79.94M,-74.84%,0.01,CoinGecko sparkline 7d
+8,FLOKI,0.10,7.19%,0.00%,42h,$173.76M,-79.23%,0.01,CoinGecko sparkline 7d
+9,2Z,0.05,4.19%,-0.06%,56h,$99.16M,-73.07%,0.01,CoinGecko sparkline 7d
+10,BORG,0.05,8.38%,-0.08%,56h,$1.52M,-71.82%,0.01,CoinGecko sparkline 7d
+11,DASH,0.05,11.98%,0.00%,56h,$198.87M,-97.02%,0.0,CoinGecko sparkline 7d
+12,XPL,0.05,9.58%,-0.13%,56h,$329.89M,-77.55%,0.0,CoinGecko sparkline 7d
+13,ASTER,0.05,7.78%,-0.18%,56h,$779.61M,-58.58%,0.01,CoinGecko sparkline 7d
+14,SPX,0.02,7.14%,-0.11%,84h,$46.18M,-57.15%,0.0,CoinGecko sparkline 7d
+15,KAS,0.02,2.99%,-0.08%,84h,$51.75M,-75.40%,0.0,CoinGecko sparkline 7d
