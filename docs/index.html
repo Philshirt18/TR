@@ -7,27 +7,67 @@
 <meta name="theme-color" content="#0b1021">
 <title>Grid Mean-Reversion Top-15</title>
 <style>
-  :root { --fg:#101218; --muted:#586174; --bg:#ffffff; --chip:#eef1f6; }
-  @media (prefers-color-scheme: dark) {
-    :root { --fg:#e8ecf1; --muted:#9aa3b2; --bg:#0b1021; --chip:#171c30; }
+  :root {
+    --bg:#23252b;
+    --surface:#2d2f36;
+    --surface-alt:#1d1f24;
+    --fg:#f4f2f7;
+    --muted:#b2b0b8;
+    --chip:#3b3d45;
+    --accent:#f0abd1;
+    --accent-muted:#d18fb4;
+    --border:rgba(240,171,209,0.2);
   }
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font:16px system-ui, -apple-system, Segoe UI, Roboto, sans-serif}
-  header{position:sticky;top:0;background:var(--bg);padding:12px 16px;border-bottom:1px solid rgba(0,0,0,.06)}
-  h1{font-size:18px;margin:0}
-  .muted{color:var(--muted);font-size:12px}
-  main{padding:12px 8px 80px}
-  table{width:100%;border-collapse:collapse}
-  th,td{padding:10px 8px;border-bottom:1px solid rgba(0,0,0,.06);text-align:left;font-variant-numeric:tabular-nums}
-  th{position:sticky;top:56px;background:var(--bg);z-index:1}
-  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
-  .chip{background:var(--chip);border-radius:12px;padding:4px 8px;font-size:12px}
-  .toolbar{display:flex;gap:8px;align-items:center;margin:8px 0}
-  select,button{font:inherit;border:1px solid rgba(0,0,0,.15);border-radius:10px;padding:6px 10px;background:transparent;color:inherit}
-  tfoot td{padding:12px 8px}
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg:#f4f2f5;
+      --surface:#ffffff;
+      --surface-alt:#f9f1f5;
+      --fg:#2d2f36;
+      --muted:#76727c;
+      --chip:#f1e7ed;
+      --accent:#d766a6;
+      --accent-muted:#b95c92;
+      --border:rgba(215,102,166,0.3);
+    }
+  }
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font:16px system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  header{position:sticky;top:0;background:var(--surface);padding:16px 18px;border-bottom:1px solid var(--border);box-shadow:0 4px 12px rgba(0,0,0,0.15)}
+  h1{font-size:20px;margin:0;color:var(--fg)}
+  .headline{display:flex;align-items:center;gap:12px}
+  .icon-btn{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);background:var(--surface-alt);color:var(--accent);font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s ease,transform .2s ease}
+  .icon-btn:hover{background:var(--accent);color:var(--surface);transform:translateY(-1px)}
+  .muted{color:var(--muted);font-size:13px}
+  main{padding:18px 12px 90px;max-width:960px;margin:0 auto}
+  table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.18)}
+  th,td{padding:12px 10px;border-bottom:1px solid rgba(255,255,255,0.06);text-align:left;font-variant-numeric:tabular-nums}
+  th{position:sticky;top:88px;background:var(--surface);z-index:1;border-bottom:1px solid var(--border);text-transform:uppercase;font-size:12px;letter-spacing:0.04em;color:var(--accent)}
+  tbody tr:nth-child(odd){background:transparent}
+  tbody tr:hover{background:rgba(240,171,209,0.07)}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .chip{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-muted) 100%);color:var(--surface-alt);border-radius:16px;padding:6px 12px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.05em}
+  .toolbar{display:flex;gap:10px;align-items:center;margin:16px 0;background:var(--surface);padding:10px 12px;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,0.12)}
+  select,button{font:inherit;border:1px solid var(--border);border-radius:12px;padding:8px 12px;background:var(--surface-alt);color:inherit}
+  button{cursor:pointer;transition:background 0.2s ease,transform 0.2s ease}
+  button:hover{background:var(--accent-muted);color:var(--surface);transform:translateY(-1px)}
+  select:focus,button:focus{outline:2px solid var(--accent);outline-offset:2px}
+  tfoot td{padding:16px 10px;background:var(--surface);border-top:1px solid var(--border)}
   .foot{color:var(--muted);font-size:12px}
+  #info-panel{position:fixed;inset:0;background:rgba(12,14,18,0.65);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .25s ease}
+  #info-panel.open{opacity:1;pointer-events:auto}
+  .panel-content{background:var(--surface);color:var(--fg);border-radius:18px;max-width:420px;width:100%;padding:24px 28px;box-shadow:0 12px 32px rgba(0,0,0,0.3)}
+  .panel-content h2{margin:0 0 12px;font-size:18px}
+  .panel-content ul{margin:0 0 18px;padding:0;list-style:none;display:grid;gap:10px}
+  .panel-content li{font-size:14px;line-height:1.4;color:var(--muted);background:var(--chip);padding:10px 12px;border-radius:12px}
+  .panel-content strong{color:var(--accent)}
+  .close-btn{border:none;border-radius:12px;padding:10px 18px;background:var(--accent);color:var(--surface);font-weight:600;cursor:pointer;width:100%;box-shadow:0 6px 16px rgba(240,171,209,0.25)}
+  .close-btn:hover{background:var(--accent-muted)}
 </style>
 <header>
-  <h1>Grid Mean-Reversion Top-15</h1>
+  <div class="headline">
+    <h1>Grid Mean-Reversion Top-15</h1>
+    <button id="info" class="icon-btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="info-panel">i</button>
+  </div>
   <div class="muted" id="stamp">Lade Daten…</div>
   <div class="chips">
     <div class="chip">±3% Haupt-Schwelle</div>
@@ -36,6 +76,24 @@
     <div class="chip">PWA</div>
   </div>
 </header>
+<div id="info-panel" role="dialog" aria-modal="true" aria-label="Spaltenbeschreibung">
+  <div class="panel-content">
+    <h2>Spalten-Glossar</h2>
+    <ul>
+      <li><strong>Rank</strong> – Rang nach Trefferrate der ±5&nbsp;% Bewegungen.</li>
+      <li><strong>Ticker</strong> – Kürzel des Coins laut CoinGecko.</li>
+      <li><strong>Signals/W</strong> – Erwartete ±5&nbsp;% Bewegungen pro Woche.</li>
+      <li><strong>Hitrate ±3%</strong> – Anteil der Bewegungen, die mindestens ±3&nbsp;% erreichen.</li>
+      <li><strong>Net P&amp;L/Trade</strong> – Gemittelter Preisimpuls pro Signal.</li>
+      <li><strong>Median Hold</strong> – Median der Dauer zwischen Signalen.</li>
+      <li><strong>24h Vol</strong> – 24h-Spotvolumen (USD) laut CoinGecko.</li>
+      <li><strong>MaxDD</strong> – Größter relativer Rückgang vom Höchststand (ATH-Change).</li>
+      <li><strong>Robustness</strong> – Stabilitätsscore basierend auf Volatilität der Bewegungen.</li>
+      <li><strong>Notes</strong> – Datenquelle / Hinweise zur Methodik.</li>
+    </ul>
+    <button id="close-info" class="close-btn">Schließen</button>
+  </div>
+</div>
 <main>
   <div class="toolbar">
     <label class="muted">Sortieren:</label>
@@ -93,5 +151,17 @@
     renderHeader(); renderBody();
   }).catch(_=>{ stamp.textContent = 'Keine Daten gefunden.'; });
   if('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js'); }
+  const infoBtn = document.querySelector('#info');
+  const closeBtn = document.querySelector('#close-info');
+  const panel = document.querySelector('#info-panel');
+  function togglePanel(show){
+    const open = show ?? !panel.classList.contains('open');
+    panel.classList.toggle('open', open);
+    infoBtn.setAttribute('aria-expanded', String(open));
+  }
+  infoBtn?.addEventListener('click', ()=>togglePanel(true));
+  closeBtn?.addEventListener('click', ()=>togglePanel(false));
+  panel?.addEventListener('click', e=>{ if(e.target === panel){ togglePanel(false); } });
+  document.addEventListener('keydown', e=>{ if(e.key === 'Escape'){ togglePanel(false); } });
 </script>
 </html>
