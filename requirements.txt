@@ -1,0 +1,13 @@
+ccxt
+pycoingecko
+pandas
+numpy
+scipy
+tqdm
+tabulate
+pytz
+pyarrow
+fastparquet
+requests
+gspread
+google-auth
